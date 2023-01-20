@@ -1,3 +1,15 @@
-@import './quasar.variables.scss';
-@import '~quasar-styl';
+@import "./quasar.variables.scss";
+@import "~quasar-styl";
 // @import '~quasar-addon-styl';
+
+.color-red-v1 {
+  color: $red-v1;
+}
+
+.bg-color-red-v1 {
+  background-color: $red-v1;
+}
+
+.bg-color-grey-v1 {
+  background-color: $grey-v1;
+}
