@@ -88,6 +88,16 @@ export default {
     //DATA
     const columns = ref([
       {
+        name: "no",
+        align: "left",
+        label: "No",
+        field: "no",
+        sortable: true,
+        style: "font-size: 15px",
+        headerClasses: "text-weight-bold",
+        headerStyle: "font-size: 18px",
+      },
+      {
         name: "name",
         align: "left",
         label: "Name",

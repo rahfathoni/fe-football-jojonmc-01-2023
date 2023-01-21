@@ -40,6 +40,12 @@ export const getTeamSquad = (state) => {
     };
     squad.push(addCoach);
   }
+  if (squad) {
+    squad = squad.map((item, index) => ({
+      no: index + 1,
+      ...item,
+    }));
+  }
   return squad;
 };
 
