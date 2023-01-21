@@ -15,7 +15,7 @@ const routes = [
     component: ClubList,
   },
   {
-    path: "/area/:id/team/:team",
+    path: "/area/:id/team/:teamId",
     name: "teamDetail",
     component: ClubDetail,
   },

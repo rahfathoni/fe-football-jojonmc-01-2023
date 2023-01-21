@@ -33,6 +33,7 @@ export default {
 
     //BEFORE MOUNTED
     onBeforeMount(async () => {
+      store.commit("main/resetAll");
       await store.dispatch("main/inquiryAllAreas");
     });
 

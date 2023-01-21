@@ -18,3 +18,22 @@ export const inquiryTeamList = async ({ commit }, payload) => {
     commit("setTeamList");
   }
 };
+
+export const inquiryTeamDetail = async ({ commit }, payload) => {
+  try {
+    const res = await servicesMock.GetTeamDetail(payload);
+    commit("setTeamDetail", res);
+  } catch (err) {
+    commit("setTeamDetail");
+  }
+};
+
+export const inquirySquadDetail = async ({ commit }, payload) => {
+  commit("setSquadDetail");
+  try {
+    const res = await servicesMock.GetSquadDetail(payload);
+    commit("setSquadDetail", res);
+  } catch (err) {
+    commit("setSquadDetail");
+  }
+};

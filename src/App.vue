@@ -21,8 +21,8 @@
         </q-card-section>
         <q-card-section class="q-pt-none q-pb-lg">
           Because I always getting this error when I try access the services
-          from <i>http://api.football-data.org</i>, I create my own
-          <b> LIMITED DUMMY DATA. </b>
+          from API <i>http://api.football-data.org</i>, I create my own
+          <b> LIMITED DUMMY DATA </b> with data mostly based on that API.
         </q-card-section>
       </q-card>
     </q-dialog>

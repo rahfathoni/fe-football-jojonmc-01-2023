@@ -21,4 +21,18 @@ export default {
       throw err;
     }
   },
+  GetTeamDetail: async (payload) => {
+    try {
+      console.log("REQ GetTeamDetail ", payload);
+      const res = await axios.get(
+        `${base_url}/v4/teams/${payload.teamId}`,
+        config
+      );
+      console.log("RES GetTeamDetail", res);
+      return res;
+    } catch (err) {
+      console.error("ERR GetTeamDetail", err);
+      throw err;
+    }
+  },
 };
