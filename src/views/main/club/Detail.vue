@@ -1,9 +1,9 @@
 <template>
-  <div class="home">Area</div>
+  <div class="home">club detail</div>
 </template>
 
 <script>
 export default {
-  name: "AreaComponent",
+  name: "ClubDetail",
 };
 </script>

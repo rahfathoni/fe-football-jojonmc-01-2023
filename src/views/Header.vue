@@ -2,13 +2,18 @@
   <div>
     <div class="fit row justify-evenly items-start content-start q-pt-xs">
       <div class="text-center q-pt-xl">
-        <div
-          class="text-weight-bold q-pb-none q-mb-none"
-          style="font-size: 30px"
-        >
-          WIKI FOOTBALL CLUB
+        <div class="fit row wrap justify-start items-start content-start">
+          <q-img width="50px" src="../assets/ball.png" />
+          <div>
+            <div
+              class="text-weight-bold q-pb-none q-mb-none"
+              style="font-size: 30px"
+            >
+              WIKI FOOTBALL CLUB
+            </div>
+            <div class="q-pt-none q-mt-none">All About Your Favorite Club</div>
+          </div>
         </div>
-        <div class="q-pt-none q-mt-none">All About Your Favorite Club</div>
       </div>
       <div class="text-center q-mr-lg">
         <q-img width="500px" height="160px" src="../assets/tim.jpg" />
@@ -41,8 +46,8 @@ import { ref } from "vue";
 export default {
   name: "HeaderLayout",
   setup() {
-    const tab = ref("beranda");
-    const tabOption = [{ name: "beranda", label: "beranda", to: "/" }];
+    const tab = ref("home");
+    const tabOption = [{ name: "home", label: "home", to: "/" }];
 
     return {
       tab,

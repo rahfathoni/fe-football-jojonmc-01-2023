@@ -1,11 +1,11 @@
 <template>
-  <div
+  <q-footer
     class="footer row wrap justify-center items-start content-start q-py-sm bg-color-red-v1"
   >
     <div class="text-grey-2" style="font-size: 15px">
       © Copyright 2023. Wiki Football Club All rights reseved
     </div>
-  </div>
+  </q-footer>
 </template>
 
 <script>
