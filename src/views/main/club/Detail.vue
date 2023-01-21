@@ -45,15 +45,27 @@
       <div>
         <div class="text-weight-bold" style="font-size: 23px">CLUB SQUAD</div>
         <q-separator size="3px" class="bg-color-red-v1 q-mb-sm" />
+        <div class="text-right" style="font-size: 13px">
+          * Click on row for squad detail
+        </div>
         <q-table
           :rows="teamSquad"
           :columns="columns"
           row-key="name"
-          hide-bottom
           flat
           bordered
           :rows-per-page-options="[0]"
-        />
+          :filter="filter"
+          @row-click="squadDetail"
+        >
+          <template v-slot:top>
+            <q-input class="col-4" dense v-model="filter" placeholder="Search">
+              <template v-slot:append>
+                <q-icon name="search" />
+              </template>
+            </q-input>
+          </template>
+        </q-table>
       </div>
     </div>
   </div>
@@ -63,12 +75,15 @@
 import { onBeforeMount, computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
+import { useQuasar } from "quasar";
+import PlayerDetailComponent from "../player/Detail.vue";
 
 export default {
   name: "ClubDetail",
   setup() {
     const store = useStore();
     const route = useRoute();
+    const $q = useQuasar();
 
     //DATA
     const columns = ref([
@@ -113,15 +128,8 @@ export default {
         headerClasses: "text-weight-bold",
         headerStyle: "font-size: 18px",
       },
-      {
-        name: "action",
-        align: "center",
-        label: "Detail",
-        style: "font-size: 15px",
-        headerClasses: "text-weight-bold",
-        headerStyle: "font-size: 18px",
-      },
     ]);
+    const filter = ref("");
 
     //BEFORE MOUNTED
     onBeforeMount(async () => {
@@ -137,12 +145,25 @@ export default {
     const teamProfile = computed(() => store.getters["main/getTeamProfile"]);
     const teamSquad = computed(() => store.getters["main/getTeamSquad"]);
 
+    //METHOD
+    const squadDetail = async (_e, row) => {
+      await store.dispatch("main/inquirySquadDetail", {
+        country: route.params.id,
+        id: row.id,
+      });
+      $q.dialog({
+        component: PlayerDetailComponent,
+      }).onOk(() => {});
+    };
+
     return {
       teamData,
       areaData,
       teamProfile,
       teamSquad,
       columns,
+      filter,
+      squadDetail,
     };
   },
 };

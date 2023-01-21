@@ -6,6 +6,7 @@ export const resetAll = (state) => {
   };
   state.teamDetail = "";
   state.teamArea = "";
+  state.squadDetail = "";
 };
 
 export const setAllAreas = (state, value) => {
@@ -34,4 +35,12 @@ export const setTeamDetail = (state, value) => {
   }
   state.teamDetail = value;
   state.teamArea = value.area;
+};
+
+export const setSquadDetail = (state, value) => {
+  if (!value) {
+    state.squadDetail = "";
+    return;
+  }
+  state.squadDetail = value;
 };

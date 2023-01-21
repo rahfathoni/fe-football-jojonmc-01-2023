@@ -7,5 +7,6 @@ export default function () {
     },
     teamDetail: "",
     teamArea: "",
+    squadDetail: "",
   };
 }

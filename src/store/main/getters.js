@@ -31,8 +31,8 @@ export const getTeamSquad = (state) => {
   if (state.teamDetail.coach) {
     const addCoach = {
       id: coach.id,
-      name: `${coach.firstName || ""} ${coach.name || ""} ${
-        coach.lastName || ""
+      name: `${coach.firstName || ""} ${
+        coach.lastName ? coach.lastName : coach.name
       }`,
       position: "Coach",
       dateOfBirth: coach.dateOfBirth,
@@ -41,4 +41,25 @@ export const getTeamSquad = (state) => {
     squad.push(addCoach);
   }
   return squad;
+};
+
+export const getSquadDetail = (state) => {
+  const detail = state.squadDetail;
+  const lastUpdated = convertDate(detail.lastUpdated);
+
+  return {
+    name: detail.name,
+    data: [
+      { field: "Birth Date", value: detail.dateOfBirth },
+      { field: "Nationality", value: detail.nationality },
+      { field: "Current Team", value: detail.currentTeam.name },
+      {
+        field: "Contract",
+        value: `${detail.currentTeam.contract.start} to ${detail.currentTeam.contract.until}`,
+      },
+      { field: "Position", value: detail.position },
+      { field: "Shirt Number", value: detail.shirtNumber },
+    ],
+    lastUpdated,
+  };
 };
