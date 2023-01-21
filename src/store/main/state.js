@@ -5,5 +5,7 @@ export default function () {
       area: "",
       list: [],
     },
+    teamDetail: "",
+    teamArea: "",
   };
 }

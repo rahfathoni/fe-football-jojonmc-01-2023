@@ -3,15 +3,15 @@
     <div class="text-weight-bold text-uppercase" style="font-size: 30px">
       <q-breadcrumbs>
         <template v-slot:separator>
-          <q-icon size="1.5em" name="chevron_right" />
+          <q-icon size="1.5em" name="chevron_right" color="grey" />
         </template>
         <q-breadcrumbs-el label="COUNTRY" to="/" />
-        <q-breadcrumbs-el :label="areaName" />
+        <q-breadcrumbs-el :label="areaData.area" />
       </q-breadcrumbs>
     </div>
     <div class="fit row inline wrap justify-around items-start content-start">
       <q-card
-        v-for="(item, index) in teamList"
+        v-for="(item, index) in areaData.list"
         :key="'id' + index"
         v-ripple
         class="col-4 q-mt-lg cursor-pointer q-hoverable"
@@ -48,19 +48,15 @@ export default {
     });
 
     //COMPUTED
-    const areaName = computed(() => store.getters["main/getTeamList"].area);
-    const teamList = computed(() => store.getters["main/getTeamList"].list);
+    const areaData = computed(() => store.getters["main/getTeamList"]);
 
     //METHOD
     const redirect = (item) => {
-      console.log("route =>", route.path);
-      console.log("item =>", item);
-      router.push({ path: `${route.path}/team/${item.tla}` });
+      router.push({ path: `${route.path}/team/${item.id}` });
     };
 
     return {
-      areaName,
-      teamList,
+      areaData,
       redirect,
     };
   },
