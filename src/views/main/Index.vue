@@ -11,9 +11,7 @@
         @click="redirect(item)"
       >
         <q-img :src="item.flag" :alt="item.countryCode" height="200px">
-          <div
-            class="absolute-bottom text-subtitle2 text-center text-uppercase"
-          >
+          <div class="absolute-bottom text-h6 text-uppercase">
             {{ item.name }}
           </div>
         </q-img>

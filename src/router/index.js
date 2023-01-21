@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/main/Index.vue";
 import ClubList from "../views/main/club/Index.vue";
+import ClubDetail from "../views/main/club/Detail.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/area/:id",
     name: "area",
     component: ClubList,
+  },
+  {
+    path: "/area/:id/team/:team",
+    name: "teamDetail",
+    component: ClubDetail,
   },
 ];
 

@@ -4,13 +4,13 @@ export const setAllAreas = (state, value) => {
 
 export const setTeamList = (state, value) => {
   if (!value) {
-    state.teamLists = {
+    state.teamList = {
       area: "",
       list: [],
     };
     return;
   }
-  state.teamLists = {
+  state.teamList = {
     area: value.competition.country,
     list: value.teams,
   };

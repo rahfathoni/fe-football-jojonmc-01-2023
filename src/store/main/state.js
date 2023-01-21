@@ -1,7 +1,7 @@
 export default function () {
   return {
     allAreas: [],
-    teamLists: {
+    teamList: {
       area: "",
       list: [],
     },
