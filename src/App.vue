@@ -1,114 +1,46 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- <q-header elevated class="glossy">
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-          icon="menu"
-        />
-
-        <q-toolbar-title> Quasar App TESTING </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header> -->
-
-    <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2">
-      <q-list>
-        <q-item-label header>Essential Links</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Docs</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item
-          clickable
-          tag="a"
-          target="_blank"
-          href="https://github.com/quasarframework/"
-        >
-          <q-item-section avatar>
-            <q-icon name="code" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item
-          clickable
-          tag="a"
-          target="_blank"
-          href="https://chat.quasar.dev"
-        >
-          <q-item-section avatar>
-            <q-icon name="chat" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item
-          clickable
-          tag="a"
-          target="_blank"
-          href="https://forum.quasar.dev"
-        >
-          <q-item-section avatar>
-            <q-icon name="forum" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item
-          clickable
-          tag="a"
-          target="_blank"
-          href="https://twitter.com/quasarframework"
-        >
-          <q-item-section avatar>
-            <q-icon name="rss_feed" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-drawer> -->
-
-    <HeaderComp />
+    <HeaderLayout />
     <q-page-container>
-      <router-view />
+      <router-view class="bg-white q-mx-xl" />
     </q-page-container>
-    <FooterComp />
+    <FooterLayout />
+
+    <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section class="q-pb-sm">
+          <div class="text-h6">Announcement</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none color-red-v1">
+          Access to XMLHttpRequest at 'http://api.football-data.org/v4/areas/'
+          from origin 'http://localhost:8080' has been blocked by CORS policy:
+          Response to preflight request doesn't pass access control check: No
+          'Access-Control-Allow-Origin' header is present on the requested
+          resource.
+        </q-card-section>
+        <q-card-section class="q-pt-none q-pb-lg">
+          Because I always getting this error when I try access the services
+          from <i>http://api.football-data.org</i>, I create my own
+          <b> LIMITED DUMMY DATA. </b>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-layout>
 </template>
 
 <script>
-import { ref } from "vue";
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 
 export default {
   name: "LayoutDefault",
   components: {
-    HeaderComp: defineAsyncComponent(() => import("./views/Header")),
-    FooterComp: defineAsyncComponent(() => import("./views/Footer")),
+    HeaderLayout: defineAsyncComponent(() => import("./views/Header")),
+    FooterLayout: defineAsyncComponent(() => import("./views/Footer")),
   },
   setup() {
     return {
-      leftDrawerOpen: ref(false),
+      alert: ref(true),
     };
   },
 };
